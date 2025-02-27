@@ -143,15 +143,15 @@ def run_experiments():
         train_set, val_set = torch.utils.data.random_split(
             dataset, [train_size, len(dataset)-train_size])
         
-        train_loader = DataLoader(train_set, batch_size=256, shuffle=True)
-        val_loader = DataLoader(val_set, batch_size=256, shuffle=False)
+        train_loader = DataLoader(train_set, batch_size=64, shuffle=True)
+        val_loader = DataLoader(val_set, batch_size=64, shuffle=False)
         
         for model_type in model_types:
             print(f"\n=== Training {model_type.upper()} (seq_len={seq_len}) ===")
             
             model = CharPredictor(
                 vocab_size=vocab_size,
-                embed_dim=64,
+                embed_dim=128,
                 hidden_size=128,
                 model_type=model_type
             ).to(device)
